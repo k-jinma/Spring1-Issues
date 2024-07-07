@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/layouts}">
+  >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <body>
+    <div layout:fragment="contents">
+      <div class="container m-0">
+        <div class="col-3 sidebar">
+          <div>
+            <h4>メニュー</h4>
+            <ul class="mb-auto">
+              <li>
+                <a th:href="@{/users}" class="my-1 text-decoration-none text-black">ユーザー一覧画面</a>
+              </li>
+              <li>
+                <a th:href="@{/user/create}" class="my-1 text-decoration-none text-black">ユーザー登録画面</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

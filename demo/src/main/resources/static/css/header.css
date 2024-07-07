@@ -1,0 +1,12 @@
+.header {
+  background-color: #0f4c75;
+  display: flex;
+  padding: 1em 0.5em;
+}
+
+.header a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}

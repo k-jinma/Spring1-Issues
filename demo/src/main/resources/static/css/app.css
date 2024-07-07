@@ -1,0 +1,21 @@
+.col-width-25 {
+  width: 25%;
+}
+
+.no-deco-link {
+  text-decoration: none;
+}
+
+.form {
+  height: 2em;
+}
+
+.valid-error-text {
+  font-size: small;
+  color: red;
+  white-space: nowrap;
+}
+
+.has-error {
+  border-color: red;
+}

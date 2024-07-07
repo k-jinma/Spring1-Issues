@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/layouts}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ユーザー一覧</title>
+  </head>
+  <body>
+    <div class="m-2" layout:fragment="contents">
+      <h1>ユーザー情報</h1>
+      <div th:if="${info}">
+        <p class="alert alert-success" th:text="#{${info}}"></p>
+      </div>
+
+      <!-- [ユーザー情報テーブル] -->
+      <table class="table table-hover users-table">
+        <thead class="thead-dark">
+          <tr>
+            <th class="col-width-25">ID</th>
+            <th class="col-width-25">名字</th>
+            <th class="col-width-25">名前</th>
+            <th>詳細</th>
+            <th>削除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="user : ${users}">
+            <td th:text="${user.Id}"></td>
+            <td th:text="${user.LastName}"></td>
+            <td th:text="${user.FirstName}"></td>
+            <td><a class="btn btn-outline-primary" th:href="@{/user/{id}(id=${user.id},page=${users.number},size=${users.size})}">詳細へ</a></td>
+            <td>
+              <form th:action="@{/user/{id}/delete(id=${user.id})}" method="post">
+                <button type="submit" class="btn btn-outline-primary">削除</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- [ページネーション] -->
+      <div th:if="${users.totalPages > 1}">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" th:classappend="${users.first ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{|/users?page=0&size=${users.size}|}" aria-label="First">
+              <span aria-hidden="true">&laquo;&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item" th:classappend="${users.number == 0 ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{|/users?page=${users.number - 1}&size=${users.size}|}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item" th:each="pageNum : ${#numbers.sequence(users.number > 3 ? users.number - 3 : 0, users.totalPages - users.number > 3 ? users.number + 3 : users.totalPages -1)}" th:classappend="${pageNum == users.number ? 'active' : ''}">
+            <a class="page-link" th:href="@{|/users?page=${pageNum}&size=${users.size}|}" th:text="${pageNum + 1}">1</a>
+          </li>
+          <li class="page-item" th:classappend="${users.number + 1 == users.totalPages ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{|/users?page=${users.number + 1}&size=${users.size}|}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+          <li class="page-item" th:classappend="${users.last ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{|/users?page=${users.totalPages - 1}&size=${users.size}|}" aria-label="Last">
+              <span aria-hidden="true">&raquo;&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

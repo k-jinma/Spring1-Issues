@@ -1,0 +1,8 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.compile.nullAnalysis.mode": "automatic",
+    "prettier.printWidth": 360,
+    "editor.wordWrapColumn": 360,
+    "prettier.tabWidth": 2,
+    "editor.tabSize": 2,
+}

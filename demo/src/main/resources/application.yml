@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1/sample?serverTimezone=UTC
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    open-in-view: true
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/templates/
+  devtools: 
+    restart: 
+      enabled: true
+    livereload: 
+      enabled: true

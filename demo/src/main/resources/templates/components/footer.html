@@ -1,0 +1,21 @@
+<div th:fragment="footer" class="footer">
+  Temp Footer
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const footer = document.querySelector(".footer");
+      const setContentFooterPosition = () => {
+        if (window.innerHeight >= document.body.offsetHeight) {
+          footer.style.position = "fixed";
+          footer.style.bottom = "0";
+        } else {
+          footer.style.position = "relative";
+          footer.style.bottom = "auto";
+        }
+      };
+
+      setContentFooterPosition();
+      window.addEventListener("resize", setContentFooterPosition);
+    });
+  </script>
+</div>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/layouts}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ユーザー詳細</title>
+  </head>
+  <body>
+    <div class="m-2" layout:fragment="contents">
+      <div class="mx-3">
+        <h1>ユーザー詳細</h1>
+        <div th:if="${error}" class="row my-3">
+          <p class="alert alert-warning" th:text="#{${error}}"></p>
+        </div>
+        <div class="row border-bottom my-3">
+          <p class="col-2 my-auto">名字</p>
+          <span class="col-4" th:text="${user.LastName}"></span>
+        </div>
+        <div class="row border-bottom my-3">
+          <p class="col-2 my-auto">名字(ふりがな)</p>
+          <span class="col-4" th:text="${user.lastNameKana}"></span>
+        </div>
+        <div class="row border-bottom my-3">
+          <p class="col-2 my-auto">名前</p>
+          <span class="col-4" th:text="${user.FirstName}"></span>
+        </div>
+        <div class="row border-bottom my-3">
+          <p class="col-2 my-auto">名前(ふりがな)</p>
+          <span class="col-4" th:text="${user.firstNameKana}"></span>
+        </div>
+        <div class="row border-bottom my-3">
+          <p class="col-2 my-auto">年齢</p>
+          <span class="col-4" th:text="${user.age}"></span>
+        </div>
+        <div class="row border-bottom my-3">
+          <p class="col-2 my-auto">電話番号</p>
+          <span class="col-4" th:text="${user.phoneNumber}"></span>
+        </div>
+        <div class="row border-bottom my-3">
+          <p class="col-2 my-auto">郵便番号</p>
+          <span class="col-4" th:text="${user.postalCode}"></span>
+        </div>
+        <div class="row border-bottom my-3">
+          <p class="col-2 my-auto">住所</p>
+          <span class="col-4" th:text="${user.address}"></span>
+        </div>
+        <a th:href="@{/users(page=${page},size=${size})}" class="btn btn-outline-primary mt-3">戻る</a>
+        <a th:href="@{/user/{userId}/edit(userId=${user.id},page=${page},size=${size})}" class="btn btn-outline-primary mt-3">編集する</a>
+      </div>
+    </div>
+  </body>
+</html>

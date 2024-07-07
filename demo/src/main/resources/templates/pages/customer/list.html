@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/layouts}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>顧客一覧</title>
+</head>
+<body>
+    <div class="m-2" layout:fragment="contents">
+        <h1>顧客一覧</h1>
+        <!-- <div th:if="${info}">
+          <p class="alert alert-success" th:text="#{${info}}"></p>
+        </div> -->
+  
+        <!-- [顧客一覧テーブル] -->
+        <table class="table table-hover users-table">
+          <thead class="thead-dark">
+            <tr>
+              <th class="col-width-25">ID</th>
+              <th class="col-width-25">出荷先名</th>
+              <th>詳細</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="customer : ${customers}">
+              <td th:text="${customer.Id}"></td>
+              <td th:text="${customer.Name}"></td>
+              <td><a class="btn btn-outline-primary" th:href="@{/customer/{id}(id=${customer.id},page=${customers.number},size=${customers.size})}">詳細へ</a></td>
+            </tr>
+          </tbody>
+        </table>
+  
+        <!-- [ページネーション] -->
+        <div th:if="${customers.totalPages > 1}">
+          <ul class="pagination justify-content-center">
+            <li class="page-item" th:classappend="${customers.first ? 'disabled' : ''}">
+              <a class="page-link" th:href="@{|/customers?page=0&size=${customers.size}|}" aria-label="First">
+                <span aria-hidden="true">&laquo;&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item" th:classappend="${customers.number == 0 ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{|/customers?page=${customers.number - 1}&size=${customers.size}|}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item" th:each="pageNum : ${#numbers.sequence(customers.number > 3 ? customers.number - 3 : 0, customers.totalPages - customers.number > 3 ? customers.number + 3 : customers.totalPages -1)}" th:classappend="${pageNum == customers.number ? 'active' : ''}">
+              <a class="page-link" th:href="@{|/customers?page=${pageNum}&size=${customers.size}|}" th:text="${pageNum + 1}">1</a>
+            </li>
+            <li class="page-item" th:classappend="${customers.number + 1 == customers.totalPages ? 'disabled' : ''}">
+              <a class="page-link" th:href="@{|/customers?page=${customers.number + 1}&size=${customers.size}|}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+            <li class="page-item" th:classappend="${customers.last ? 'disabled' : ''}">
+              <a class="page-link" th:href="@{|/customers?page=${customers.totalPages - 1}&size=${customers.size}|}" aria-label="Last">
+                <span aria-hidden="true">&raquo;&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    
+</body>
+</html>
