@@ -23,9 +23,14 @@ public class CustomerController {
 
 
     @RequestMapping( path = "/customers", method=RequestMethod.GET)
-    public String list( @PageableDefault(size = 10) Pageable pageable, Model model) {
+    public String list(
+        Model model,
+        @PageableDefault(size = 10) Pageable pageable
+    ) {
 
+        // CustomerServiceのfindAllメソッドを呼び出す
         var customers = customerService.findAll(pageable);
+        // 取得したCustomerのリストをModelにセット
         model.addAttribute("customers", customers);
         return "pages/customer/list";
     }
@@ -33,19 +38,19 @@ public class CustomerController {
     @RequestMapping(path = "customer/{id}")
     public String detail(
         Model model,
-        @PathVariable("id") Integer id,
-        @RequestParam(name = "page", required = false, defaultValue = "1") int page,
-        @RequestParam(name = "size", required = false, defaultValue = "10") int size
+        @PathVariable("id") Integer id
     ) {
         try {
+            // CustomerServiceのfindOneメソッドを呼び出す
             var customer = customerService.findOne(id);
+            // 取得したCustomerをModelにセット
             model.addAttribute("customer", customer);
-            model.addAttribute("page", page);
-            model.addAttribute("size", size);
+
+        // NotFoundExceptionが発生した場合はエラーページにリダイレクト
         } catch (NotFoundException e) {
             return "redirect:/error/404";
         }
-        return "redirect:/customers";
+        return "pages/customer/detail";
     }
     
 

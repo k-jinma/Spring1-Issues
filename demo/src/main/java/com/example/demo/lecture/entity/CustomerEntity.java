@@ -1,10 +1,13 @@
 package com.example.demo.lecture.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,6 +29,10 @@ public class CustomerEntity extends BaseEntity{
 
     @Column(name = "phone_number")
     private String phone_number;
+
+    //リレーションの関係を定義する
+    @OneToMany(mappedBy = "customer")
+    private List<CustomerDestinationEntity> customerDestinations;
 
     public Integer getId() {
         return id;
@@ -57,7 +64,11 @@ public class CustomerEntity extends BaseEntity{
     public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
-
-    
+    public List<CustomerDestinationEntity> getCustomerDestinations() {
+        return customerDestinations;
+    }
+    public void setCustomerDestinations(List<CustomerDestinationEntity> customerDestinations) {
+        this.customerDestinations = customerDestinations;
+    }
 
 }

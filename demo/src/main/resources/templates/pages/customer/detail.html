@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/layouts}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>顧客詳細</title>
+  </head>
+  <body>
+    
+    <!-- [顧客詳細] -->
+    <div class="m-2" layout:fragment="contents">
+      <div class="mx-3">
+        <h1>顧客詳細</h1>
+        <div th:if="${error}" class="row my-3">
+          <p class="alert alert-warning" th:text="#{${error}}"></p>
+        </div>
+        <div class="row border-bottom my-3">
+          <p class="col-2 my-auto">出荷先名</p>
+          <span class="col-4" th:text="${customer.name}"></span>
+        </div>
+        <div class="row border-bottom my-3">
+          <p class="col-2 my-auto">郵便番号</p>
+          <span class="col-4" th:text="${customer.postal_code}"></span>
+        </div>
+        <div class="row border-bottom my-3">
+          <p class="col-2 my-auto">住所</p>
+          <span class="col-4" th:text="${customer.address}"></span>
+        </div>
+        <div class="row border-bottom my-3">
+          <p class="col-2 my-auto">連絡先</p>
+          <span class="col-4" th:text="${customer.phone_number}"></span>
+        </div>
+      </div>
+      
+      <!-- [顧客配送先詳細テーブル] -->
+      <div class="mx-3">
+        <h2>顧客配送先詳細</h2>
+        <table class="table table-hover users-table">
+          <thead class="thead-dark">
+            <tr>
+              <th class="col-width-25">顧客配送先名</th>
+              <th class="col-width-25"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="customerDestination : ${customer.customerDestinations}">
+              <td th:text="${customerDestination.name}"></td>
+              <td><a class="btn btn-outline-primary" th:href="@{/customerDestination/{id}(id=${customerDestination.id})}">詳細へ</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <td><a class="btn btn-outline-primary" th:href="@{#}">編集</a></td>
+      </div>
+    </div>
+  </body>
+</html>
