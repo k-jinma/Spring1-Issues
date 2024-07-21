@@ -58,8 +58,11 @@ public class InboundController {
             model.addAttribute("suppliers", suppliers);
             return "pages/inbound/create";
         }
-        // var user = userForm.toEntity();
+        var inbound = inboundForm.toEntity();
+
+        // 保存処理
         // user = userService.save(user);
+        
         // return "redirect:/user/" + user.getId();
         return "redirect:/inbound/create";
     }
