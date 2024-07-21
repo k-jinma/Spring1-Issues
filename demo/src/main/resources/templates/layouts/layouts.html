@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
   </head>
-  <body></body>
+  <body>
 
     <!-- ヘッダ領域 -->
     <div th:replace="~{components/header :: header}"></div>
@@ -23,5 +23,32 @@
     <!-- フッタ領域 -->
     <div th:replace="~{components/footer :: footer}"></div>
 
+    <!-- この位置に記述するのはよくないが動作しないので一応ここに記述 -->
+    <script>
+      const picker = new Litepicker({
+        element: document.getElementById('scheduled-date'),
+        autoRefresh: true,
+        format: 'YYYY-MM-DD', // 日付フォーマット
+        setup: (picker) => {
+          picker.on('selected', (el) => {
+            var date = document.querySelector("#scheduled-date").value;
+            var statusSelect = document.querySelector("#status");
+
+            if (new Date(date) > new Date()) {
+              statusSelect.innerHTML = `
+                <option value="1">入荷予定</option>
+              `;
+            } else {
+              statusSelect.innerHTML = `
+                <option value="1">入荷予定</option>
+                <option value="2">入荷済み</option>
+                <option value="3">出荷予約</option>
+              `;
+            }
+
+          });
+        }
+      });
+    </script>
   </body>
 </html>

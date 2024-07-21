@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>入荷登録</title>
+    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
   </head>
   <body>
     <div class="m-2" layout:fragment="contents">
@@ -41,15 +42,16 @@
           <div class="row col-6 col-md-5">
             <span class="valid-error-text" th:if="${#fields.hasErrors('scheduledDate')}" th:errors="*{scheduledDate}"></span>
             <div class="d-flex mb-3">
-              <label class="col-4 my-auto" id="scheduled-date">入荷予定日 : </label>
-              <input type="text" class="form-control form" th:classappend="${#fields.hasErrors('scheduledDate')} ? 'has-error'" th:field="*{scheduledDate}" />
+              <label class="col-4 my-auto" id="scheduled-date-label">入荷予定日 : </label>
+              <input type="text" id="scheduled-date" class="form-control form" th:classappend="${#fields.hasErrors('scheduledDate')} ? 'has-error'" th:field="*{scheduledDate}"/>
+
             </div>
           </div>
           <div class="row col-6 col-md-5">
             <span class="valid-error-text" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></span>
             <div class="d-flex mb-3">
-              <label class="col-4 my-auto" id="status">入荷ステータス : </label>
-              <select class="form-control form">
+              <label class="col-4 my-auto">入荷ステータス : </label>
+              <select id="status" class="form-control form">
                 <option value="1">入荷予定</option>
                 <option value="2">入荷済み</option>
                 <option value="3">出荷予約</option>
@@ -60,5 +62,26 @@
         </form>
       </div>
     </div>
+
+    <script>
+      // 入荷予定日が未来日付の場合は入荷予定のみ選択可能とし現在以前の日付の場合は3種類選択可能とする
+      var date = document.querySelector("#scheduled-date").value;
+      var statusSelect = document.querySelector("#status");
+
+      var currentDate = new Date();
+      var selectedDate = new Date(date);
+
+      if (selectedDate > currentDate) {
+        statusSelect.options[0].disabled = false;
+        statusSelect.options[1].disabled = true;
+        statusSelect.options[2].disabled = true;
+      } else {
+        statusSelect.options[0].disabled = true;
+        statusSelect.options[1].disabled = false;
+        statusSelect.options[2].disabled = false;
+      }
+    </script>
+
+    
   </body>
 </html>
