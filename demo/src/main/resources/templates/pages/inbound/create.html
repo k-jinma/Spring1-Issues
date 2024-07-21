@@ -48,10 +48,10 @@
             </div>
           </div>
           <div class="row col-6 col-md-5">
-            <span class="valid-error-text" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></span>
+            <!-- <span class="valid-error-text" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></span> -->
             <div class="d-flex mb-3">
               <label class="col-4 my-auto">入荷ステータス : </label>
-              <select id="status" class="form-control form">
+              <select id="status" class="form-control form" th:field="*{status}">
                 <option value="1">入荷予定</option>
                 <option value="2">入荷済み</option>
                 <option value="3">出荷予約</option>
