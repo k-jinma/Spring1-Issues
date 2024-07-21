@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.demo.lecture.service.InboundService;
 import com.example.demo.lecture.service.ItemService;
 import com.example.demo.lecture.service.SupplierService;
 
@@ -22,6 +23,9 @@ public class InboundController {
 
     @Autowired
     SupplierService supplierService;
+
+    @Autowired
+    InboundService inboundService;
 
     @RequestMapping(path = "/inbound/create", method = RequestMethod.GET)
     public String showCreate(
@@ -61,7 +65,7 @@ public class InboundController {
         var inbound = inboundForm.toEntity();
 
         // 保存処理
-        // user = userService.save(user);
+        inbound = inboundService.save(inbound);
         
         // return "redirect:/user/" + user.getId();
         return "redirect:/inbound/create";

@@ -34,6 +34,7 @@ public class InboundForm {
         inboundHistoryEntity.setItem_id(itemId);
         inboundHistoryEntity.setSupplier_id(supplierId);
         inboundHistoryEntity.setQuantity(quantity);
+        inboundHistoryEntity.setStatus(status);
         inboundHistoryEntity.setExpectedDate(scheduledDate);
         
         // TODO: ユーザー名を設定
