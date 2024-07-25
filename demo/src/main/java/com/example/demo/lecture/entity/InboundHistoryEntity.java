@@ -86,6 +86,11 @@ public class InboundHistoryEntity extends BaseEntity{
         this.status = status;
     }
 
+    public InboundHistoryEntity toEntity() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toEntity'");
+    }
+
 
     
     
