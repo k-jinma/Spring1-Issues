@@ -28,6 +28,8 @@
       const picker = new Litepicker({
         element: document.getElementById('scheduled-date'),
         autoRefresh: true,
+        // 本日以降
+        minDate: new Date(),
         format: 'YYYY-MM-DD', // 日付フォーマット
         setup: (picker) => {
           picker.on('selected', (el) => {
