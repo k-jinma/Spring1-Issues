@@ -76,8 +76,8 @@ public class InboundControllerTest {
     public void createTest() {
         // モックの設定
         when(result.hasErrors()).thenReturn(false);
-        var inbound = inboundForm.toEntity();
-        when(inboundService.save(inbound)).thenReturn(inboundForm);
+        // var inbound = inboundForm.toEntity();
+        // when(inboundService.save(inbound)).thenReturn(inboundForm);
 
         InboundForm inboundForm = new InboundForm();
         inboundForm.setItemId(0);; // 必要なセットアップを行う
