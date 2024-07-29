@@ -72,5 +72,13 @@ public class OutboundHistoryEntity extends BaseEntity{
         this.status = status;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     
 }

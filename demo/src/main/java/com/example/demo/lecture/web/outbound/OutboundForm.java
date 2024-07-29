@@ -4,6 +4,7 @@ import com.example.demo.lecture.entity.OutboundHistoryEntity;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 public class OutboundForm {
 
@@ -34,18 +35,18 @@ public class OutboundForm {
     /** FormデータをOutboundHistoryEntityに変換する */
     public OutboundHistoryEntity toEntity() {
         OutboundHistoryEntity outboundHistoryEntity = new OutboundHistoryEntity();
-        // inboundHistoryEntity.setItem_id(itemId);
-        // inboundHistoryEntity.setSupplier_id(supplierId);
-        // inboundHistoryEntity.setQuantity(quantity);
-        // inboundHistoryEntity.setStatus(status);
-        // inboundHistoryEntity.setExpectedDate(scheduledDate);
+        outboundHistoryEntity.setItemId(itemId);
+        outboundHistoryEntity.setQuantity(quantity);
+        outboundHistoryEntity.setStatus(status);
+        outboundHistoryEntity.setCustomerDestinationId(customerDestinationId);
+        outboundHistoryEntity.setExpectedDate(expectedDate);
         
-        // // TODO: ユーザー名を設定
-        // inboundHistoryEntity.setCreatedBy("ダミーユーザー1");
-        // inboundHistoryEntity.setCreatedAt(LocalDateTime.now());
-        // // TODO: ユーザー名を設定
-        // inboundHistoryEntity.setUpdatedBy("ダミーユーザー1");
-        // inboundHistoryEntity.setUpdatedAt(LocalDateTime.now());
+        // TODO: ユーザー名を設定
+        outboundHistoryEntity.setCreatedBy("ダミーユーザー1");
+        outboundHistoryEntity.setCreatedAt(LocalDateTime.now());
+        // TODO: ユーザー名を設定
+        outboundHistoryEntity.setUpdatedBy("ダミーユーザー1");
+        outboundHistoryEntity.setUpdatedAt(LocalDateTime.now());
 
         return outboundHistoryEntity;
     }
