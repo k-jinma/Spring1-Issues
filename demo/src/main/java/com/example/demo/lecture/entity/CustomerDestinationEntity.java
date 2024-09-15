@@ -17,8 +17,8 @@ public class CustomerDestinationEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    // @Column(name = "customer_id")
-    // private Integer customerId;
+    @Column(name = "customer_id", insertable = false, updatable = false)
+    private Integer customerId;
 
     //リレーションの関係を定義する
     @ManyToOne

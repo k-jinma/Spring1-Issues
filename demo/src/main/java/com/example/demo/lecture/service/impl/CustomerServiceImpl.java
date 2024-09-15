@@ -29,7 +29,7 @@ public class CustomerServiceImpl implements CustomerService {
         if (!customer.isPresent()) {
             throw new NotFoundException();
         }
-        return customer.get();  
+        return customer.get(); 
     }
 
 }
