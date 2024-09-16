@@ -9,36 +9,40 @@
     <div class="m-2" layout:fragment="contents">
       <div class="mx-3">
         <h1>顧客登録</h1>
-        <form th:action="@{/user/create}" th:object="${userForm}" method="post">
+        <form th:action="@{/customer/create}" th:object="${customerForm}" method="post">
           <div th:if="${error}">
             <p class="alert alert-waning" th:text="#{${error}}"></p>
           </div>
+
           <div class="row col-6 col-md-5">
-            <span class="valid-error-text" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+            <span class="valid-error-text" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
             <div class="d-flex mb-3">
               <label class="col-4 my-auto" id="last-name-text">顧客名 : </label>
-              <input type="text" class="form-control form" th:classappend="${#fields.hasErrors('lastName')} ? 'has-error'" th:field="*{lastName}" />
+              <input type="text" class="form-control form" th:classappend="${#fields.hasErrors('name')} ? 'has-error'" th:field="*{name}" />
             </div>
           </div>
+
           <div class="row col-6 col-md-5">
-            <span class="valid-error-text" th:if="${#fields.hasErrors('lastNameKana')}" th:errors="*{lastNameKana}"></span>
+            <span class="valid-error-text" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}"></span>
             <div class="d-flex mb-3">
               <label class="col-4 my-auto" id="last-name-kana-text">郵便番号 : </label>
-              <input type="text" class="form-control form" th:classappend="${#fields.hasErrors('lastNameKana')} ? 'has-error'" th:field="*{lastNameKana}" />
+              <input type="text" class="form-control form" th:classappend="${#fields.hasErrors('postalCode')} ? 'has-error'" th:field="*{postalCode}" />
             </div>
           </div>
+
           <div class="row col-6 col-md-5">
-            <span class="valid-error-text" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+            <span class="valid-error-text" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
             <div class="d-flex mb-3">
               <label class="col-4 my-auto" id="first-name-text">住所 : </label>
-              <input type="text" class="form-control form" th:classappend="${#fields.hasErrors('firstName')} ? 'has-error'" th:field="*{firstName}" />
+              <input type="text" class="form-control form" th:classappend="${#fields.hasErrors('address')} ? 'has-error'" th:field="*{address}" />
             </div>
           </div>
+
           <div class="row col-6 col-md-5">
-            <span class="valid-error-text" th:if="${#fields.hasErrors('firstNameKana')}" th:errors="*{firstNameKana}"></span>
+            <span class="valid-error-text" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
             <div class="d-flex mb-3">
               <label class="col-4 my-auto" id="first-name-kana-text">連絡先 : </label>
-              <input type="text" class="form-control form" th:classappend="${#fields.hasErrors('firstNameKana')} ? 'has-error'" th:field="*{firstNameKana}" />
+              <input type="text" class="form-control form" th:classappend="${#fields.hasErrors('phoneNumber')} ? 'has-error'" th:field="*{phoneNumber}" />
             </div>
           </div>
           <button type="submit" class="btn btn-outline-primary">登録</button>
