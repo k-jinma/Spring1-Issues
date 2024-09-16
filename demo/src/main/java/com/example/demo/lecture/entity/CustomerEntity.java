@@ -22,13 +22,13 @@ public class CustomerEntity extends BaseEntity{
     private String name;
 
     @Column(name = "postal_code")
-    private String postal_code;
+    private String postalCode;
 
     @Column(name = "address")
     private String address;
 
     @Column(name = "phone_number")
-    private String phone_number;
+    private String phoneNumber;
 
     //リレーションの関係を定義する
     @OneToMany(mappedBy = "customer")
@@ -46,11 +46,11 @@ public class CustomerEntity extends BaseEntity{
     public void setName(String name) {
         this.name = name;
     }
-    public String getPostal_code() {
-        return postal_code;
+    public String getPostalCode() {
+        return postalCode;
     }
-    public void setPostal_code(String postal_code) {
-        this.postal_code = postal_code;
+    public void setPostalCode(String postalCode) {
+    this.postalCode = postalCode;
     }
     public String getAddress() {
         return address;
@@ -58,11 +58,11 @@ public class CustomerEntity extends BaseEntity{
     public void setAddress(String address) {
         this.address = address;
     }
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
     public List<CustomerDestinationEntity> getCustomerDestinations() {
         return customerDestinations;
