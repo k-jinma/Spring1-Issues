@@ -11,5 +11,6 @@ public interface CustomerService {
 
   Page<CustomerEntity> findAll(Pageable pageable);
   CustomerEntity findOne(Integer id) throws NotFoundException;
+  CustomerEntity save(CustomerEntity customer);
 
 }

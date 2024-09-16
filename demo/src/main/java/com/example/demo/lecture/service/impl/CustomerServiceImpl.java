@@ -32,4 +32,9 @@ public class CustomerServiceImpl implements CustomerService {
         return customer.get(); 
     }
 
+    @Override
+    public CustomerEntity save(CustomerEntity customer) {
+        return customerRepository.save(customer);
+    }
+
 }
